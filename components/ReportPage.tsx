@@ -8,7 +8,7 @@ interface ReportPageProps {
 
 const ReportPage: React.FC<ReportPageProps> = ({ content, pageNumber }) => {
   return (
-    <div className="bg-white min-h-[1056px] w-full max-w-[816px] mx-auto p-24 shadow-xl relative mb-16 flex flex-col page-break border-x border-gray-50 overflow-hidden print:overflow-visible print:mb-0 print:shadow-none">
+    <div className="bg-white min-h-[1056px] w-full max-w-[816px] mx-auto p-24 shadow-xl relative mb-16 flex flex-col page-break border-x border-gray-50 overflow-hidden print:overflow-visible print:mb-0 print:shadow-none print:min-h-0 print:h-auto">
       {/* Premium pagination marker */}
       <div className="absolute right-0 top-0 opacity-10 p-12">
         <span className="text-[80px] font-serif font-bold text-gray-400 tabular-nums leading-none">
@@ -28,7 +28,7 @@ const ReportPage: React.FC<ReportPageProps> = ({ content, pageNumber }) => {
         </div>
       </div>
 
-      <header className="mb-20 max-w-[85%]">
+      <header className="mb-20 max-w-[85%] break-inside-avoid print:break-inside-avoid">
         <h2 className="text-gray-900 text-4xl font-serif font-bold mb-8 tracking-tight leading-[1.2]">
           {content.headline}
         </h2>
@@ -36,7 +36,7 @@ const ReportPage: React.FC<ReportPageProps> = ({ content, pageNumber }) => {
       </header>
 
       {content.numberDisplay && (
-        <div className="mb-20 flex items-baseline space-x-8">
+        <div className="mb-20 flex items-baseline space-x-8 break-inside-avoid print:break-inside-avoid">
           <span className="text-9xl font-serif font-bold text-[#F97316] tracking-tighter tabular-nums leading-none">
             {content.numberDisplay}
           </span>
@@ -56,7 +56,7 @@ const ReportPage: React.FC<ReportPageProps> = ({ content, pageNumber }) => {
         {content.paragraphs.map((p, idx) => (
           <p
             key={idx}
-            className="text-[#374151] leading-[2.2] text-[16px] font-light text-justify tracking-wide opacity-90"
+            className="text-[#374151] leading-[2.2] text-[16px] font-light text-justify tracking-wide opacity-90 break-inside-avoid print:break-inside-avoid"
           >
             {p}
           </p>
@@ -64,7 +64,7 @@ const ReportPage: React.FC<ReportPageProps> = ({ content, pageNumber }) => {
       </main>
 
       {content.accentNote && (
-        <footer className="mt-20">
+        <footer className="mt-20 break-inside-avoid print:break-inside-avoid">
           <div className="bg-[#5B21B6]/[0.02] p-12 rounded-lg border-l-[4px] border-[#5B21B6]">
             <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#5B21B6] mb-6 opacity-60">
               Strategic Advisory Point

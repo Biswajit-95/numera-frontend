@@ -55,6 +55,12 @@
           overflow: visible !important;
           display: block !important;
           box-sizing: border-box !important;
+          height: auto !important;
+          min-height: 0 !important;
+          /* Prevent content inside from being cut off at page boundaries */
+          break-inside: auto !important;
+          /* Add small top padding on every page */
+          padding-top: 48px !important;
         }
 
         /* Force A4 size pages for print */
@@ -71,6 +77,36 @@
         /* Ensure inner content uses box-sizing so padding doesn't expand page */
         .page-break * {
           box-sizing: border-box !important;
+        }
+
+        /* Prevent accent note and footer sections from breaking across pages */
+        footer {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        /* Keep headers and large blocks together on same page */
+        header {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+          break-after: avoid !important;
+        }
+
+        /* Allow paragraphs to break but avoid breaking small sections */
+        main > div {
+          break-inside: auto !important;
+        }
+
+        /* Prevent ALL direct children of page-break from splitting across pages */
+        .page-break > * {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        /* Ensure paragraphs and text blocks stay intact */
+        p {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
         }
         html,
         body {
